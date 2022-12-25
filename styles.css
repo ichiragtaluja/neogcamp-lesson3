@@ -2,9 +2,9 @@
 
 
 :root {
-    --primary-color: #2563eb;
-    --grey-color: #60a5fa;
-    --offwhite-color: #eff6ff;
+    --primary-color: #e879f9;
+    --dark-color: #86198f;
+    --offwhite-color: #f9fafb;
 }
 body {
     font-family: 'Montserrat', sans-serif;
@@ -87,14 +87,14 @@ hr {
 }
 
 .hero-image {
-    max-width: 350px;
+    max-width: 450px;
     display: block;
     margin: auto;
 
 }
 
 .hero-heading {
-    color: var(--primary-color);
+    color: var(--dark-color);
     padding-top: 1rem;
     text-align: center;
 }
@@ -105,7 +105,7 @@ hr {
 }
 
 .section {
-    padding: 2rem;
+    padding: 1rem 2rem 2rem 2rem;
     text-align: center;
 }
 
@@ -135,7 +135,7 @@ hr {
 }
 
 .hero .hero-span {
-    color: var(--primary-color)
+    color: var(--dark-color)
 }
 
 .article-list {
