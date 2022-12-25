@@ -3,9 +3,11 @@
 :root {
     --primary-color: #6C63FF;
     --grey-color: #64748b;
+    --offwhite-color: #f1f5f9;
 }
 body {
     font-family: 'Montserrat', sans-serif;
+    margin: 0rem;
 }
 
 .container {
@@ -92,9 +94,38 @@ hr {
 .hero-heading {
     color: var(--grey-color);
     padding-top: 1rem;
-   
+    text-align: center;
+}
+
+.section h1 {
+    text-align: center;
     
 }
+
+.section {
+    padding: 2rem;
+}
+
+.ow {
+    background-color: var(--offwhite-color);
+}
+
+.footer {
+    background-color: var(--primary-color);
+    padding: 2rem 1rem;
+    text-align: center;
+    color: white;
+    border-top-right-radius: 1rem;
+}
+.footer .link {
+
+    color: white;
+}
+
+.footer ul {
+    padding: 0rem;
+}
+
 
 
 
