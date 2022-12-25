@@ -81,6 +81,7 @@ hr {
 
 .hero {
     padding: 2rem;
+    padding-top: 5rem;
 
 }
 
@@ -124,6 +125,15 @@ hr {
 
 .footer ul {
     padding: 0rem;
+}
+
+.footer .footer-heading {
+    font-weight: bold;
+    font-size: large;
+}
+
+.hero .hero-span {
+    color: var(--primary-color)
 }
 
 
