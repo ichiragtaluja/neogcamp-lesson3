@@ -1,5 +1,105 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
+:root {
+    --primary-color: #6C63FF;
+    --grey-color: #64748b;
+}
 body {
     font-family: 'Montserrat', sans-serif;
 }
+
+.container {
+    padding: 0rem 1rem;
+}
+
+.container-centre {
+    max-width: 600px;
+    margin: auto
+}
+
+.link-primary {
+    background-color: var(--primary-color);
+    border-radius: 0.5rem;
+    color: white
+}
+
+.link-secondary {
+    color: var(--primary-color);
+    border-radius: 0.5rem;
+    border: solid 1px var(--primary-color)
+}
+
+.link {
+    padding: 0.5rem 1rem;
+    text-decoration: none
+}
+
+hr {
+    margin: 2rem 0rem;
+}
+
+.list-non-bullet {
+    list-style: none;
+}
+
+.list-in-line {
+    display: inline;
+    padding: 0rem 0.5rem;
+    
+}
+
+.navigation {
+
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+
+.nav-brand {
+
+}
+
+.navigation .link {
+    color: white;
+    
+}
+
+.navigation .nav-pills {
+    text-align: right;
+}
+
+.navigation .nav-brand {
+    font-weight: bold;
+    
+}
+.navigation .link-active {
+    font-weight: bold;    
+}
+
+.hero {
+    padding: 2rem;
+
+}
+
+.hero-image {
+    max-width: 350px;
+    display: block;
+    margin: auto;
+
+}
+
+.hero-heading {
+    color: var(--grey-color);
+    padding-top: 1rem;
+   
+    
+}
+
+
+
+
+
+
+
+
