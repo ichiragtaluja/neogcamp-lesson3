@@ -136,6 +136,14 @@ hr {
     color: var(--primary-color)
 }
 
+.article-list {
+    padding: 2rem 2rem;
+    margin: 1rem;
+    margin-right: 5rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
 
 
 
