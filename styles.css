@@ -109,6 +109,7 @@ hr {
     text-align: center;
 }
 
+
 .ow {
     background-color: var(--offwhite-color);
 }
@@ -145,6 +146,34 @@ hr {
     border-radius: 1rem;
     text-align: center;
 }
+
+.blog-heading {
+    color: var(--dark-color);
+    padding: 3rem;
+    text-align: center;
+}
+
+.blog-list {
+    max-width: 800px;
+    text-align: justify;
+    padding: 1rem 4rem 4rem 2rem;
+    margin: auto;
+    line-height: 2.5rem;
+}
+
+.blog-text {
+    text-align: center;
+    line-height: 2.5rem;
+    max-width: 800px;
+    margin: auto;
+}
+
+.blog-short {
+    text-align: justify;
+    max-width: 800px;
+    line-height: 2rem;
+}
+
 
 
 
