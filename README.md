@@ -1,7 +1,7 @@
 
 # My Portfolio
 
-My portfolio contains all the web-application projects and it's source code in one place for anyone to looks at my work.
+My portfolio contains all the web-application projects and it's source code in one place for anyone to look at my work.
 
 
 ## Screenshots
