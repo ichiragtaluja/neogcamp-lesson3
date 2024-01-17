@@ -6,6 +6,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Chirag Taluja</title>
     <link href="styles.css" rel="stylesheet"/>
+    <script type="module">
+        import zim from "https://zimjs.org/cdn/015/zim";
+
+        const iconsAssets = [
+        "javascript.png",
+        "nodejs.png",
+        "reactjs.png",
+        "typescript.png",
+        "php.png",
+        "tailwind.png",
+        "arduino.png",
+        "sql.png",
+      ];
+
+      const assets = [...iconsAssets, "portrait.png"];
+
+      const path = "assets/";
+      // See Docs under Frame for FIT, FILL, FULL, and TAG
+        new Frame("portrait", 500, 500, light, null, ready,assets,path);
+        function ready() {
+          // Given F, S, W, H or frame, stage, stageW, stageH
+  
+          new Circle(100, blue).center().drag();
+
+          const sizeOfIcon = 200;
+
+const portrait = new Pic("portrait.png")
+  .siz(700)
+  .pos(0, 0, CENTER, BOTTOM);
+
+let icons = [];
+
+loop(iconsAssets, (i) => {
+  const icon = new Pic(i).siz(100).centerReg({ add: false });
+  icons.push(icon);
+});
+
+// given F (Frame), S (Stage), W (width), H (height)
+// put code here
+
+const orbit = new Blob({
+  points: [
+    [-2.1, -44.8, 0, 0, -47.9, 0, 47.9, 0, "mirror"],
+    [140.3, 0, 0, 0, 0, -38.3, 0, 38.3, "mirror"],
+    [1.1, 51.2, 0, 0, 46.8, -1.1, -46.8, 1.1, "mirror"],
+    [-162.6, 2.1, 0, 0, 0, 38.3, 0, -38.3, "mirror"],
+  ],
+  borderColor: blue,
+}).siz(700);
+
+const iconBeads = new Beads({
+  angle: 0,
+  interactive: true,
+  path: orbit,
+  obj: series(icons),
+  visible: false,
+  count: icons.length,
+  percents: [
+    0,
+    12.5 - 4,
+    25 - 4,
+    37.5 - 4,
+    50,
+    62.5 + 4,
+    75 + 4,
+    87.5 + 4,
+  ],
+}).pos(0, 0, CENTER);
+
+iconBeads.beads.animate({
+  props: {
+    orient: false,
+    path: iconBeads.path,
+    zoom: [0.015, 0.45],
+    speed: [4, 10],
+    fade: [-0.4, 5],
+  },
+
+  time: 35,
+  ease: "sine",
+  loop: true,
+  dynamic: true,
+});
+
+const parallax = new Parallax([
+  { obj: portrait, prop: "x", propChange: 10 },
+  { obj: portrait, prop: "y", propChange: 20, input: "mouseY" },
+]);
+
+const speedController = new Dial({
+  step: 1,
+  backgroundColor: "tomato",
+  indicatorColor: null,
+  tickColor: "white",
+})
+  .pos(30, 20, RIGHT, BOTTOM)
+  .alp(0.5);
+
+zog(iconBeads.beads);
+
+speedController.on("change", (e) => {
+  const newSpeed = e.target.currentValue;
+  zog(newSpeed);
+
+  zog(iconBeads.beads.getChildAt(0).rate);
+
+  iconBeads.beads.percentSpeed = newSpeed * 100;
+});
+
+portrait.on("mouseover", () => {
+  portrait.effect(
+    new GlowEffect({
+      color: pink,
+      blurX: 50,
+      blurY: 50,
+    })
+  );
+
+  portrait.on("mouseout", () => {
+    portrait.noEffect();
+  });
+});
+
+
+
+        } // end ready
+      </script>
 </head>
 <body>
     <nav class="navigation container">
@@ -25,9 +152,11 @@
     <hr>
 
     <header class="hero">
-        <img class="hero-image"src="/images/image-final.svg" />
+        <!-- <img class="hero-image" src="/images/image-final.svg" /> -->
+        <div class="hero-image" id="portrait"></div>
         <h1 class="hero-heading">Chirag Taluja <span class="hero-span">Web-App Developer<span/></h1>
     </header>
+   
     <hr>
 
     <section class="section ow">

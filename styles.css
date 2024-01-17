@@ -1,189 +1,192 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
 :root {
-    --primary-color: #e879f9;
-    --dark-color: #86198f;
-    --offwhite-color: #f9fafb;
+  --primary-color: #e879f9;
+  --dark-color: #86198f;
+  --offwhite-color: #f9fafb;
 }
 body {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0rem;
+  font-family: "Montserrat", sans-serif;
+  margin: 0rem;
 }
 
 .container {
-    padding: 0rem 1rem;
+  padding: 0rem 1rem;
 }
 
 .container-centre {
-    max-width: 600px;
-    margin: auto
+  max-width: 600px;
+  margin: auto;
 }
 
 .link-primary {
-    background-color: var(--primary-color);
-    border-radius: 0.5rem;
-    color: white;
-    
+  background-color: var(--primary-color);
+  border-radius: 0.5rem;
+  color: white;
 }
 
 .link-secondary {
-    color: var(--primary-color);
-    border-radius: 0.5rem;
-    border: solid 1px var(--primary-color)
+  color: var(--primary-color);
+  border-radius: 0.5rem;
+  border: solid 1px var(--primary-color);
 }
 
 .link {
-    padding: 0.5rem 1rem;
-    text-decoration: none
+  padding: 0.5rem 1rem;
+  text-decoration: none;
 }
 
 hr {
-    margin: 2rem 0rem;
+  margin: 2rem 0rem;
 }
 
 .list-non-bullet {
-    list-style: none;
+  list-style: none;
 }
 
 .list-in-line {
-    display: inline;
-    padding: 0rem 0.5rem;
-    
+  display: inline;
+  padding: 0rem 0.5rem;
 }
 
 .navigation {
-
-    background-color: var(--primary-color);
-    color: white;
-    padding: 1rem;
-    border-bottom-left-radius: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  border-bottom-left-radius: 1rem;
 }
 
-
 .navigation .link {
-    color: white;
-    
+  color: white;
 }
 
 .navigation .nav-pills {
-    text-align: right;
+  text-align: right;
 }
 
 .navigation .nav-brand {
-    font-weight: bold;
-    
+  font-weight: bold;
 }
 .navigation .link-active {
-    font-weight: bold;    
+  font-weight: bold;
 }
 
 .hero {
-    padding: 2rem;
-    padding-top: 3rem;
-
+  padding: 2rem;
+  padding-top: 3rem;
 }
 
 .hero-image {
-    max-width: 800px;
-    display: block;
-    margin: auto;
-
+  max-width: 800px;
+  display: block;
+  margin: auto;
 }
 
 .hero-heading {
-    color: var(--dark-color);
-    padding-top: 1rem;
-    text-align: center;
+  color: var(--dark-color);
+  padding-top: 1rem;
+  text-align: center;
 }
 
 .section h1 {
-    text-align: center;
-    
+  text-align: center;
 }
 
 .section {
-    padding: 1rem 2rem 2rem 2rem;
-    text-align: center;
+  padding: 1rem 2rem 2rem 2rem;
+  text-align: center;
 }
 
-
 .ow {
-    background-color: var(--offwhite-color);
+  background-color: var(--offwhite-color);
 }
 
 .footer {
-    background-color: var(--primary-color);
-    padding: 2rem 1rem;
-    text-align: center;
-    color: white;
-    border-top-right-radius: 1rem;
+  background-color: var(--primary-color);
+  padding: 2rem 1rem;
+  text-align: center;
+  color: white;
+  border-top-right-radius: 1rem;
 }
 .footer .link {
-
-    color: white;
+  color: white;
 }
 
 .footer ul {
-    padding: 0rem;
+  padding: 0rem;
 }
 
 .footer .footer-heading {
-    font-weight: bold;
-    font-size: large;
+  font-weight: bold;
+  font-size: large;
 }
 
 .hero .hero-span {
-    color: var(--dark-color)
+  color: var(--dark-color);
 }
 
 .article-list {
-    padding: 0.2rem 2rem 2rem 2rem;
-    margin: 1rem;
-    margin-right: 4rem;
-    border-radius: 1rem;
-    text-align: center;
+  padding: 0.2rem 2rem 2rem 2rem;
+  margin: 1rem;
+  margin-right: 4rem;
+  border-radius: 1rem;
+  text-align: center;
 }
 
 .blog-heading {
-    color: var(--dark-color);
-    padding: 3rem;
-    text-align: center;
+  color: var(--dark-color);
+  padding: 3rem;
+  text-align: center;
 }
 
 .blog-list {
-    max-width: 800px;
-    text-align: justify;
-    padding: 1rem 4rem 4rem 2rem;
-    margin: auto;
-    line-height: 2.5rem;
+  max-width: 800px;
+  text-align: justify;
+  padding: 1rem 4rem 4rem 2rem;
+  margin: auto;
+  line-height: 2.5rem;
 }
 
 .blog-text {
-    text-align: center;
-    line-height: 2.5rem;
-    max-width: 800px;
-    margin: auto;
+  text-align: center;
+  line-height: 2.5rem;
+  max-width: 800px;
+  margin: auto;
 }
 
 .blog-short {
-    text-align: justify;
-    max-width: 800px;
-    line-height: 2rem;
+  text-align: justify;
+  max-width: 800px;
+  line-height: 2rem;
 }
 
 .header-span {
-    font-size: .9rem;
-    color:silver;
-    padding-left: .5rem;
+  font-size: 0.9rem;
+  color: silver;
+  padding-left: 0.5rem;
 }
 
+#portrait {
+  /* width: 90vw; */
+  display: block;
+  margin: auto;
 
+  /* or make responsive with perentage */
+  /* border: 1px solid black; */
+}
 
+#portraitCanvas {
+  width: 100%;
+  height: 80%;
+}
 
+/* .hero {
+  padding: 2rem;
+  padding-top: 3rem;
+} */
 
-
-
-
-
-
+/* .hero-image {
+  max-width: 800px;
+  display: block;
+  margin: auto;
+} */
