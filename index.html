@@ -24,7 +24,7 @@
 
       const path = "assets/";
       // See Docs under Frame for FIT, FILL, FULL, and TAG
-        new Frame("portrait", 500, 500, light, null, ready,assets,path);
+        new Frame("portrait", 1050, 800, "transparent", null, ready,assets,path);
         function ready() {
           // Given F, S, W, H or frame, stage, stageW, stageH
   
@@ -75,7 +75,12 @@ const iconBeads = new Beads({
   ],
 }).pos(0, 0, CENTER);
 
-iconBeads.beads.animate({
+// iconBeads.angle=0;
+
+
+
+// if(count === 0){
+  iconBeads.beads.animate({
   props: {
     orient: false,
     path: iconBeads.path,
@@ -87,8 +92,11 @@ iconBeads.beads.animate({
   time: 35,
   ease: "sine",
   loop: true,
-  dynamic: true,
+  // dynamic: true,
 });
+
+// }
+
 
 const parallax = new Parallax([
   { obj: portrait, prop: "x", propChange: 10 },
@@ -96,7 +104,9 @@ const parallax = new Parallax([
 ]);
 
 const speedController = new Dial({
-  step: 1,
+  min:1,
+  max:4,
+  step: .2,
   backgroundColor: "tomato",
   indicatorColor: null,
   tickColor: "white",
@@ -107,12 +117,43 @@ const speedController = new Dial({
 zog(iconBeads.beads);
 
 speedController.on("change", (e) => {
+  // count++
   const newSpeed = e.target.currentValue;
   zog(newSpeed);
 
-  zog(iconBeads.beads.getChildAt(0).rate);
+  // zog(iconBeads.beads.getChildAt(0).rate);
+  // zog(iconBeads.beads.animate);
 
-  iconBeads.beads.percentSpeed = newSpeed * 100;
+ 
+
+  iconBeads.beads.animate({
+  props: {
+    orient: false,
+    path: iconBeads.path,
+    // zoom: [0.015, 0.45],
+    speed: [4*newSpeed, 10*newSpeed],
+    // fade: [-0.4, 5],
+  },
+
+  // time: 35,
+  ease: "sine",
+  loop: true,
+  dynamic: true,
+});
+// iconBeads.angle = 0
+
+
+// S.update();
+
+
+  
+
+  // iconBeads.beads.percentSpeed = newSpeed * 100 *100;
+  
+  // iconBeads.beads.children.loop((child)=>{})
+  // loop(iconBeads.beads.children,(child)=>{
+  //   child.percentSpeed+= newSpeed*100
+  // })
 });
 
 portrait.on("mouseover", () => {
