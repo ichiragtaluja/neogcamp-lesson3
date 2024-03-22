@@ -23,9 +23,16 @@
 
         socket.on("ready", () => {
           zogg("socket ready");
-        });
 
-        new Circle(100, blue).center().drag();
+          const ball = new Circle(100, blue).center().drag();
+
+          socket.on("data", function (d) {
+            // normally, stuff happens in here ;-)
+            zogo(d);
+          });
+
+          S.update();
+        });
       } // end ready
     </script>
     <meta name="viewport" content="width=device-width, user-scalable=no" />
