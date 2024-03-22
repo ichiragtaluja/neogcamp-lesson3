@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ZIM - Shared - Multiuser - Code Creativity</title>
+
+    <script src="https://zimjs.org/cdn/2.3.0/socket.io.js"></script>
+
+    <script type="module">
+      import zim from "https://zimjs.org/cdn/016/zim_socket";
+
+      new Frame(FIT, 1024, 768, light, dark, ready);
+      function ready() {
+        // Given F, S, W, H or frame, stage, stageW, stageH
+
+        //
+        // ZIM SOCKET CONTENT - load a second window
+
+        // zimSocketURL comes from the import of zim_socket
+        // get the app name here: https://zimjs.com/request.html
+        const appName = "shared";
+        const socket = new Socket(zimSocketURL, appName);
+
+        socket.on("ready", () => {
+          zogg("socket ready");
+        });
+
+        new Circle(100, blue).center().drag();
+      } // end ready
+    </script>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+  </head>
+  <body></body>
+</html>
