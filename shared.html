@@ -26,13 +26,17 @@
 
           const input = new TextInput().loc(50, 50);
           F.on("keydown", (e) => {
-            zog(e.key);
             if (e.key == "Enter") {
               const x = rand(W);
               const y = rand(H);
               new Label(input.text).loc(x, y);
-
-              socket.setProperties({});
+              socket.setProperties({
+                text: input.text,
+                textX: x,
+                textY: y,
+              });
+              input.text = "";
+              S.update();
             }
           });
 
@@ -45,14 +49,18 @@
             });
           });
 
-          socket.on("data", function (d) {
+          socket.on("data", function (data) {
             // normally, stuff happens in here ;-)
-            zogo(d);
+            zogo(data);
+
+            if (data.text) {
+              new Label(data.text).loc(data.textX, data.textY);
+            }
 
             let x = socket.getLatestValue("x");
             let y = socket.getLatestValue("y");
-
             ball.loc(x, y);
+
             S.update();
           });
 
