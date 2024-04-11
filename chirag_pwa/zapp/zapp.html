@@ -184,6 +184,23 @@ https://zimjs.com/zapps
 
             const ball = new Circle(100, blue).center().drag();
 
+            const chatInput = new TextInput(400)
+              .sca(0.8)
+              .pos(0, 100, CENTER, BOTTOM);
+            const sendButton = new Button("Send").pos(0, 10, CENTER, BOTTOM);
+            const chatDisplay = new TextArea(600, 400)
+              .pos(0, 50)
+              .sca(0.8)
+              .center();
+
+            sendButton.on("click", () => {
+              const message = chatInput.text;
+              if (message.trim() !== "") {
+                socket.setProperties({ message: message });
+                chatInput.text = "";
+              }
+            });
+
             ball.on("pressmove", () => {
               socket.setProperties({
                 x: Math.round(ball.x),
