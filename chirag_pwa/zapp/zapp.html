@@ -187,8 +187,17 @@ https://zimjs.com/zapps
                 socket.setProperties({ message: message });
                 chatInput.text = "";
               }
+            });
+            socket.on("data", function (data) {
+              zogr(data);
+              if (data.message) {
+                chatDisplay.text += data.message + "\n";
+                S.update();
+              }
               S.update();
             });
+
+            S.update();
 
             // const input = new TextInput().loc(50, 50);
             // F.on("keydown", (e) => {
@@ -229,15 +238,6 @@ https://zimjs.com/zapps
 
             //   S.update();
             // });
-            socket.on("data", (data) => {
-              zogr(data);
-              if (data.message) {
-                chatDisplay.text += data.message + "\n";
-                S.update();
-              }
-            });
-
-            S.update();
           });
         } // end runZapp
       } // end ready
