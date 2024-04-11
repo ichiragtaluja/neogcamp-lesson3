@@ -187,7 +187,12 @@ https://zimjs.com/zapps
             const chatInput = new TextInput(400)
               .sca(0.8)
               .pos(0, 100, CENTER, BOTTOM);
-            const sendButton = new Button("Send").pos(0, 10, CENTER, BOTTOM);
+            const sendButton = new Button(null, null, "Send").pos(
+              0,
+              10,
+              CENTER,
+              BOTTOM
+            );
             const chatDisplay = new TextArea(600, 400)
               .pos(0, 50)
               .sca(0.8)
