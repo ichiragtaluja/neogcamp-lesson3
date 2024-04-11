@@ -183,6 +183,7 @@ https://zimjs.com/zapps
               const message = chatInput.text;
               if (message.trim() !== "") {
                 zogb("been here");
+                chatDisplay.text = message;
                 socket.setProperties({ message: message });
                 chatInput.text = "";
               }
