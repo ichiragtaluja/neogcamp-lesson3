@@ -3,12 +3,14 @@
 // Please check to see all files have been listed with local links
 // (Do not worry about icon files) 
 
-var cacheName = 'zim_pwa_Shake';
+var cacheName = 'zim_pwa_pwa';
 var filesToCache = [
   './',
   'index.html',
   'libraries/createjs.js',
-  'libraries/zim_min.js'
+  'libraries/zim_min.js',
+  'libraries/socket.io.js',
+  'libraries/zimsocket_1.1.js'
 ];
 
 /* Start the service worker and cache all of the app's content */
