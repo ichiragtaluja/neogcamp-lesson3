@@ -182,11 +182,12 @@ https://zimjs.com/zapps
               }
             });
 
-            const ball = new Circle(100, blue).center().drag();
+            const ball = new Circle(100, blue).center().drag().top();
 
             const chatInput = new TextInput(400)
               .sca(0.8)
-              .pos(0, 100, CENTER, BOTTOM);
+              .pos(0, 100, CENTER, BOTTOM)
+              .bot();
             const sendButton = new Button(null, null, "Send").pos(
               0,
               10,
