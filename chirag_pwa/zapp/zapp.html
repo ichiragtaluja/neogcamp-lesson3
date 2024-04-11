@@ -182,7 +182,7 @@ https://zimjs.com/zapps
             sendButton.on("click", () => {
               const message = chatInput.text;
               if (message.trim() !== "") {
-                zogr("been here");
+                zogb("been here");
                 chatDisplay.text = message;
                 socket.setProperties({ message: message });
                 chatInput.text = "";
@@ -194,7 +194,7 @@ https://zimjs.com/zapps
                 chatDisplay.text += data.message + "\n";
                 S.update();
               }
-              //   S.update();
+              S.update();
             });
 
             S.update();
