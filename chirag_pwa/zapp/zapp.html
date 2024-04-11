@@ -229,6 +229,7 @@ https://zimjs.com/zapps
             // });
             socket.on("data", (data) => {
               if (data.message) {
+                zogr(data);
                 chatDisplay.text += data.message + "\n";
                 S.update();
               }
