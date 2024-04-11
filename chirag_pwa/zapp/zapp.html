@@ -182,6 +182,7 @@ https://zimjs.com/zapps
             sendButton.on("click", () => {
               const message = chatInput.text;
               if (message.trim() !== "") {
+                zogg("been here");
                 socket.setProperties({ message: message });
                 chatInput.text = "";
               }
