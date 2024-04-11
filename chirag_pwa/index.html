@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ZIM - Code Creativity</title>
+
+    <!-- zimjs.com - JavaScript Canvas Framework -->
+    <script src="https://zimjs.org/cdn/1.4.1/createjs.js"></script>
+    <script src="https://zimjs.org/cdn/016/zim_min.js"></script>
+    <script src="https://zimjs.org/cdn/2.3.0/socket.io.js"></script>
+    <script src="https://zimjs.org/cdn/zimsocket_1.1.js"></script>
+    <!-- <script>
+      // FOR PWA
+      // https://zimjs.com/zapps.html
+      // must be an index.html in app directory
+
+      // import zim from "https://zimjs.org/cdn/016/zim";
+      new Frame(FULL, null, null, light, dark, ready);
+      function ready() {
+        // Given F, S, W, H or frame, stage, stageW, stageH
+
+        new Circle(100, blue).center().drag();
+      } // end ready
+    </script> -->
+    <script>
+      // import zim from "https://zimjs.org/cdn/016/zim_socket";
+
+      new Frame(FIT, 1024, 768, light, dark, ready);
+      function ready() {
+        // Given F, S, W, H or frame, stage, stageW, stageH
+
+        //
+        // ZIM SOCKET CONTENT - load a second window
+
+        // zimSocketURL comes from the import of zim_socket
+        // get the app name here: https://zimjs.com/request.html
+        const appName = "shared";
+        const socket = new Socket(zimSocketURL, appName);
+
+        socket.on("ready", () => {
+          zogg("socket ready");
+
+          const input = new TextInput().loc(50, 50);
+          F.on("keydown", (e) => {
+            if (e.key == "Enter") {
+              const x = rand(W);
+              const y = rand(H);
+              new Label(input.text).loc(x, y);
+              socket.setProperties({
+                text: input.text,
+                textX: x,
+                textY: y,
+              });
+              input.text = "";
+              S.update();
+            }
+          });
+
+          const ball = new Circle(100, blue).center().drag();
+
+          ball.on("pressmove", () => {
+            socket.setProperties({
+              x: Math.round(ball.x),
+              y: Math.round(ball.y),
+            });
+          });
+
+          socket.on("data", function (data) {
+            // normally, stuff happens in here ;-)
+            zogo(data);
+
+            if (data.text) {
+              new Label(data.text).loc(data.textX, data.textY);
+            }
+
+            let x = socket.getLatestValue("x");
+            let y = socket.getLatestValue("y");
+            ball.loc(x, y);
+
+            S.update();
+          });
+
+          S.update();
+        });
+      } // end ready
+    </script>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+  </head>
+  <body></body>
+</html>
