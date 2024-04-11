@@ -165,79 +165,48 @@ https://zimjs.com/zapps
 
           socket.on("ready", () => {
             zogg("socket ready");
-            const chatInput = new TextInput(400)
-              .sca(0.8)
-              .pos(0, 100, CENTER, BOTTOM);
-            const sendButton = new Button(null, null, "Send").pos(
-              0,
-              10,
-              CENTER,
-              BOTTOM
-            );
-            const chatDisplay = new TextArea(600, 400)
-              .pos(0, 50)
-              .sca(0.8)
-              .center();
 
-            sendButton.on("click", () => {
-              const message = chatInput.text;
-              if (message.trim() !== "") {
-                zogb("been here");
-                chatDisplay.text = message;
-                socket.setProperties({ message: message });
-                chatInput.text = "";
-              }
-            });
-            socket.on("data", function (data) {
-              zogr(data);
-              if (data.message) {
-                chatDisplay.text += data.message + "\n";
+            const input = new TextInput().loc(50, 50);
+            F.on("keydown", (e) => {
+              if (e.key == "Enter") {
+                const x = rand(W);
+                const y = rand(H);
+                new Label(input.text).loc(x, y);
+                socket.setProperties({
+                  text: input.text,
+                  textX: x,
+                  textY: y,
+                });
+                input.text = "";
                 S.update();
               }
+            });
+
+            const ball = new Circle(100, blue).center().drag();
+
+            ball.on("pressmove", () => {
+              socket.setProperties({
+                x: Math.round(ball.x),
+                y: Math.round(ball.y),
+              });
+            });
+
+            socket.on("data", function (data) {
+              // normally, stuff happens in here ;-)
+              zogo(data);
+
+              if (data.text) {
+                new Label(data.text).loc(data.textX, data.textY);
+              }
+
+              let x = socket.getLatestValue("x");
+              let y = socket.getLatestValue("y");
+              ball.loc(x, y);
+
               S.update();
             });
 
             S.update();
-
-            // const input = new TextInput().loc(50, 50);
-            // F.on("keydown", (e) => {
-            //   if (e.key == "Enter") {
-            //     const x = rand(W);
-            //     const y = rand(H);
-            //     new Label(input.text).loc(x, y);
-            //     socket.setProperties({
-            //       text: input.text,
-            //       textX: x,
-            //       textY: y,
-            //     });
-            //     input.text = "";
-            //     S.update();
-            //   }
-            // });
-
-            // const ball = new Circle(100, blue).center().drag();
-
-            // ball.on("pressmove", () => {
-            //   socket.setProperties({
-            //     x: Math.round(ball.x),
-            //     y: Math.round(ball.y),
-            //   });
-            // });
-
-            // socket.on("data", function (data) {
-            //   // normally, stuff happens in here ;-)
-            //   zogo(data);
-
-            //   if (data.text) {
-            //     new Label(data.text).loc(data.textX, data.textY);
-            //   }
-
-            //   let x = socket.getLatestValue("x");
-            //   let y = socket.getLatestValue("y");
-            //   ball.loc(x, y);
-
-            //   S.update();
-            // });
           });
         } // end runZapp
       } // end ready
