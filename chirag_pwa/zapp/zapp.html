@@ -205,6 +205,7 @@ https://zimjs.com/zapps
             sendButton.on("click", () => {
               const message = chatInput.text;
               if (message.trim() !== "") {
+                chatDisplay.text += message + "\n";
                 socket.setProperties({ message: message });
                 chatInput.text = "";
               }
