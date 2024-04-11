@@ -167,8 +167,13 @@ https://zimjs.com/zapps
             zogg("socket ready");
             const chatInput = new TextInput(400)
               .sca(0.8)
-              .pos(0, 50, CENTER, BOTTOM);
-            const sendButton = new Button("Send").pos(0, 10, CENTER, BOTTOM);
+              .pos(0, 100, CENTER, BOTTOM);
+            const sendButton = new Button(null, null, "Send").pos(
+              0,
+              10,
+              CENTER,
+              BOTTOM
+            );
             const chatDisplay = new TextArea(600, 400)
               .pos(0, 50)
               .sca(0.8)
@@ -224,7 +229,7 @@ https://zimjs.com/zapps
             socket.on("data", (data) => {
               if (data.message) {
                 chatDisplay.text += data.message + "\n";
-                chatDisplay.update();
+                S.update();
               }
             });
 
