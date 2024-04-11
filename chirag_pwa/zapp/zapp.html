@@ -221,6 +221,11 @@ https://zimjs.com/zapps
               if (data.text) {
                 new Label(data.text).loc(data.textX, data.textY);
               }
+              if (data.message) {
+                chatDisplay.text += data.message + "\n";
+                // chatDisplay.update();
+                S.update();
+              }
 
               let x = socket.getLatestValue("x");
               let y = socket.getLatestValue("y");
