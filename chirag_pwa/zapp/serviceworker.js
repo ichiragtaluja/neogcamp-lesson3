@@ -10,7 +10,8 @@ var filesToCache = [
   'libraries/createjs.js',
   'libraries/zim_min.js',
   'libraries/socket.io.js',
-  'libraries/zimsocket_1.1.js'
+  'libraries/zimsocket_1.1.js',
+  'libraries/zim_socket'
 ];
 
 /* Start the service worker and cache all of the app's content */
