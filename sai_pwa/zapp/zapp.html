@@ -115,12 +115,12 @@ https://zimjs.com/zapps
 
                   S.on("stagemousemove", function (event) {
                     remoteDrawing.graphics.lineTo(event.stageX, event.stageY);
-                    // S.update();
+                    S.update();
                   });
 
                   S.on("stagemouseup", function () {
                     S.off("stagemousemove");
-                    // S.update();
+                    S.update();
                   });
                   S.update();
                 }
