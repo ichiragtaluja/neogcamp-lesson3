@@ -103,33 +103,33 @@ https://zimjs.com/zapps
                   S.update();
                 });
 
-                // socket.setProperties({
-                //   x: event.stageX,
-                //   y: event.stageY,
-                //   color: drawing.graphics._stroke.style,
-                // });
+                socket.setProperties({
+                  x: event.stageX,
+                  y: event.stageY,
+                  color: drawing.graphics._stroke.style,
+                });
                 S.update();
               });
-              //   socket.on("data", function (data) {
-              //     if (data.x && data.y && data.color) {
-              //       const remoteDrawing = new Shape().addTo(drawingArea);
-              //       remoteDrawing.graphics
-              //         .beginStroke(data.color)
-              //         .moveTo(data.x, data.y);
+              socket.on("data", function (data) {
+                if (data.x && data.y && data.color) {
+                  const remoteDrawing = new Shape().addTo(drawingArea);
+                  remoteDrawing.graphics
+                    .beginStroke(data.color)
+                    .moveTo(data.x, data.y);
 
-              //       S.on("stagemousemove", function (event) {
-              //         remoteDrawing.graphics.lineTo(event.stageX, event.stageY);
-              //         S.update();
-              //       });
+                  S.on("stagemousemove", function (event) {
+                    remoteDrawing.graphics.lineTo(event.stageX, event.stageY);
+                    S.update();
+                  });
 
-              //       S.on("stagemouseup", function () {
-              //         S.off("stagemousemove");
-              //         S.update();
-              //       });
-              //       S.update();
-              //     }
-              //     S.update();
-              //   });
+                  S.on("stagemouseup", function () {
+                    S.off("stagemousemove");
+                    S.update();
+                  });
+                  S.update();
+                }
+                S.update();
+              });
               //----------------------------------
               //   const chatInput = new TextInput(400)
               //     .sca(0.8)
