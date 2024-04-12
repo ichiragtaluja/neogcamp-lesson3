@@ -154,7 +154,7 @@ https://zimjs.com/zapps
                   remoteDrawing.graphics.lineTo(data.moveX, data.moveY);
                   S.update();
                 }
-                if (data.mouseMove && data.moveX && !data.moveY) {
+                if (data.moveY && data.moveX && !data.moveY) {
                   remoteDrawing.graphics.endStroke();
                   S.update();
                 }
