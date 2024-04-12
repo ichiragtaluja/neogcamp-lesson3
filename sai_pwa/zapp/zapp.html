@@ -81,21 +81,44 @@ https://zimjs.com/zapps
             socket.on("ready", () => {
               zogg("socket ready");
 
-              const handleDraw = (event) => {
-                const { stageX, stageY } = event;
-                socket.emit("draw", { x: stageX, y: stageY });
-              };
+              const drawingArea = new Container().addTo();
 
-              socket.on("draw", (data) => {
-                const { x, y } = data;
-                new Circle(5, "black").centerReg(x, y).addTo();
-                S.update();
+              S.on("stagemousedown", function (event) {
+                const drawing = new Shape().addTo(drawingArea);
+                drawing.graphics
+                  .beginStroke(Colors.random())
+                  .moveTo(event.stageX, event.stageY);
+
+                S.on("stagemousemove", function (event) {
+                  drawing.graphics.lineTo(event.stageX, event.stageY);
+                });
+
+                S.on("stagemouseup", function () {
+                  S.off("stagemousemove");
+                });
+
+                socket.setProperties({
+                  x: event.stageX,
+                  y: event.stageY,
+                  color: drawing.graphics._stroke.style,
+                });
               });
+              socket.on("data", function (data) {
+                if (data.x && data.y && data.color) {
+                  const remoteDrawing = new Shape().addTo(drawingArea);
+                  remoteDrawing.graphics
+                    .beginStroke(data.color)
+                    .moveTo(data.x, data.y);
 
-              S.on("pressmove", handleDraw);
+                  S.on("stagemousemove", function (event) {
+                    remoteDrawing.graphics.lineTo(event.stageX, event.stageY);
+                  });
 
-              // Update the display
-              S.update();
+                  S.on("stagemouseup", function () {
+                    S.off("stagemousemove");
+                  });
+                }
+              });
 
               //   const chatInput = new TextInput(400)
               //     .sca(0.8)
