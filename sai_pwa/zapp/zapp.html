@@ -119,10 +119,9 @@ https://zimjs.com/zapps
               });
 
               socket.on("data", function (data) {
-                let remoteDrawing;
+                let remoteDrawing = new Shape().addTo(drawingArea);
                 if (data.x && data.y && data.color) {
                   zogb("here");
-                  remoteDrawing = new Shape().addTo(drawingArea);
 
                   remoteDrawing.graphics
                     .beginStroke(data.color)
