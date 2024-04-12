@@ -86,7 +86,7 @@ https://zimjs.com/zapps
               S.on("stagemousedown", function (event) {
                 const drawing = new Shape().addTo(drawingArea);
                 drawing.graphics
-                  .beginStroke(Colors.random())
+                  .beginStroke(red)
                   .moveTo(event.stageX, event.stageY);
 
                 S.on("stagemousemove", function (event) {
