@@ -93,6 +93,13 @@ https://zimjs.com/zapps
                 const mouseMove = S.on("stagemousemove", function (event) {
                   zogr("mousemove");
                   drawing.graphics.lineTo(event.stageX, event.stageY);
+                  socket.setProperties({
+                    moving: true,
+                    moveX: event.stageX,
+                    moveY: event.stageY,
+                    color: drawing.graphics._stroke.style,
+                  });
+
                   S.update();
                 });
 
@@ -114,6 +121,12 @@ https://zimjs.com/zapps
               socket.on("data", function (data) {
                 if (data.x && data.y && data.color) {
                   zogb("here");
+                  const remoteDrawing = new Shape().addTo(drawingArea);
+
+                  remoteDrawing.graphics
+                    .beginStroke(data.color)
+                    .moveTo(data.x, data.y);
+
                   //   const remoteDrawing = new Shape().addTo(drawingArea);
                   //   remoteDrawing.graphics
                   //     .beginStroke(data.color)
@@ -130,12 +143,10 @@ https://zimjs.com/zapps
                   //   });
                   //   S.update();
 
-                  const remoteDrawing = new Shape().addTo(drawingArea);
-                  remoteDrawing.graphics
-                    .beginStroke(data.color)
-                    .moveTo(data.x, data.y);
-
                   remoteDrawing.graphics.lineTo(event.stageX, event.stageY);
+                }
+                if (data.moveX && data.moveY && moving) {
+                  zogr(data);
                 }
                 S.update();
               });
