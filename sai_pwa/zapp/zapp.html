@@ -134,7 +134,6 @@ https://zimjs.com/zapps
 
                   //   S.on("stagemousemove", function (event) {
                   //     remoteDrawing.graphics.lineTo(event.stageX, event.stageY);
-                  //     S.update();
                   //   });
 
                   //   S.on("stagemouseup", function () {
@@ -142,11 +141,10 @@ https://zimjs.com/zapps
                   //     S.update();
                   //   });
                   //   S.update();
-
-                  remoteDrawing.graphics.lineTo(event.stageX, event.stageY);
                 }
                 if (data.moveX && data.moveY) {
-                  zogr(data);
+                  //   zogr(data);
+                  remoteDrawing.graphics.lineTo(data.moveX, data.moveY);
                 }
                 S.update();
               });
