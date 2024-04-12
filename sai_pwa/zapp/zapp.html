@@ -99,7 +99,11 @@ https://zimjs.com/zapps
                 S.on("stagemouseup", function () {
                   zogr("mouseup");
                   drawing.graphics.endStroke();
-                  S.off("stagemousemove");
+                  S.off("stagemousemove", function (event) {
+                    zogr("mousemove");
+                    drawing.graphics.lineTo(event.stageX, event.stageY);
+                    S.update();
+                  });
                   S.update();
                 });
 
