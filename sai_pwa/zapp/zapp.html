@@ -94,7 +94,7 @@ https://zimjs.com/zapps
                   zogr("mousemove");
                   drawing.graphics.lineTo(event.stageX, event.stageY);
                   socket.setProperties({
-                    moving: true,
+                    // moving: true,
                     moveX: event.stageX,
                     moveY: event.stageY,
                     color: drawing.graphics._stroke.style,
@@ -145,7 +145,7 @@ https://zimjs.com/zapps
 
                   remoteDrawing.graphics.lineTo(event.stageX, event.stageY);
                 }
-                if (data.moveX && data.moveY && data.moving) {
+                if (data.moveX && data.moveY) {
                   zogr(data);
                 }
                 S.update();
