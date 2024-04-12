@@ -93,11 +93,13 @@ https://zimjs.com/zapps
                 S.on("stagemousemove", function (event) {
                   zogr("mousemove");
                   drawing.graphics.lineTo(event.stageX, event.stageY);
+                  S.update();
                 });
 
                 S.on("stagemouseup", function () {
                   zogr("mouseup");
                   S.off("stagemousemove");
+                  S.update();
                 });
 
                 socket.setProperties({
@@ -105,6 +107,7 @@ https://zimjs.com/zapps
                   y: event.stageY,
                   color: drawing.graphics._stroke.style,
                 });
+                S.update();
               });
               socket.on("data", function (data) {
                 if (data.x && data.y && data.color) {
