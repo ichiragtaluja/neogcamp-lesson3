@@ -127,17 +127,20 @@ https://zimjs.com/zapps
                 remoteDrawing.graphics
                   .beginStroke(data.color)
                   .moveTo(data.x, data.y);
-              }
-              if (data.mouseMove && data.moveX && data.moveY) {
-                zogr(data);
-                remoteDrawing.graphics.lineTo(data.moveX, data.moveY);
+
+                if (data.mouseMove && data.moveX && data.moveY) {
+                  zogr(data);
+                  remoteDrawing.graphics.lineTo(data.moveX, data.moveY);
+                  S.update();
+                }
+                if (data.moveY && data.moveX && !data.mouseMove) {
+                  zogb(data);
+                  remoteDrawing.graphics.endStroke();
+                  S.update();
+                }
                 S.update();
               }
-              if (data.moveY && data.moveX && !data.mouseMove) {
-                zogb(data);
-                remoteDrawing.graphics.endStroke();
-                S.update();
-              }
+              S.update();
             });
             //----------------------------------
             //   const chatInput = new TextInput(400)
