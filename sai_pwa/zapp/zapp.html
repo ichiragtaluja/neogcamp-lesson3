@@ -113,6 +113,7 @@ https://zimjs.com/zapps
 
               socket.on("data", function (data) {
                 if (data.x && data.y && data.color) {
+                  zogb("here");
                   //   const remoteDrawing = new Shape().addTo(drawingArea);
                   //   remoteDrawing.graphics
                   //     .beginStroke(data.color)
@@ -133,6 +134,8 @@ https://zimjs.com/zapps
                   remoteDrawing.graphics
                     .beginStroke(data.color)
                     .moveTo(data.x, data.y);
+
+                  remoteDrawing.graphics.lineTo(event.stageX, event.stageY);
                 }
                 S.update();
               });
