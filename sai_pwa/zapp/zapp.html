@@ -90,7 +90,7 @@ https://zimjs.com/zapps
                   .beginStroke(red)
                   .moveTo(event.stageX, event.stageY);
 
-                S.on("stagemousemove", function (event) {
+                const mouseMove = S.on("stagemousemove", function (event) {
                   zogr("mousemove");
                   drawing.graphics.lineTo(event.stageX, event.stageY);
                   S.update();
@@ -99,11 +99,7 @@ https://zimjs.com/zapps
                 S.on("stagemouseup", function () {
                   zogr("mouseup");
                   drawing.graphics.endStroke();
-                  S.off("stagemousemove", function (event) {
-                    zogr("mousemove");
-                    drawing.graphics.lineTo(event.stageX, event.stageY);
-                    S.update();
-                  });
+                  S.off("stagemousemove", mouseMove);
                   S.update();
                 });
 
