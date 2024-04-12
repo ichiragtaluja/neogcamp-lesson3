@@ -150,11 +150,11 @@ https://zimjs.com/zapps
                   //   S.update();
                 }
                 if (data.mouseMove && data.moveX && data.moveY) {
-                  //   zogr(data);
+                  zogr(data);
                   remoteDrawing.graphics.lineTo(data.moveX, data.moveY);
                   S.update();
                 }
-                if (data.mouseMove && data.moveX && data.moveY) {
+                if (data.mouseMove && data.moveX && !data.moveY) {
                   remoteDrawing.graphics.endStroke();
                   S.update();
                 }
