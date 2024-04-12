@@ -84,16 +84,19 @@ https://zimjs.com/zapps
               const drawingArea = new Container().addTo();
 
               S.on("stagemousedown", function (event) {
+                zogg("mousedown");
                 const drawing = new Shape().addTo(drawingArea);
                 drawing.graphics
                   .beginStroke(red)
                   .moveTo(event.stageX, event.stageY);
 
                 S.on("stagemousemove", function (event) {
+                  zogr("mousemove");
                   drawing.graphics.lineTo(event.stageX, event.stageY);
                 });
 
                 S.on("stagemouseup", function () {
+                  zogr("mouseup");
                   S.off("stagemousemove");
                 });
 
