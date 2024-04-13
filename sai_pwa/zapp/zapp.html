@@ -138,29 +138,40 @@ https://zimjs.com/zapps
                   .beginStroke(data.color)
                   .moveTo(data.x, data.y);
 
+                const mouseMove1 = S.on("stagemousemove", function (event) {
+                  remoteDrawing.graphics.lineTo(event.stageX, event.stageY);
+                  S.upate();
+                });
+
+                S.on("stagemouseup", function () {
+                  S.off("stagemousemove", mouseMove1);
+                  remoteDrawing.graphics.endStroke();
+                  S.update();
+                });
+
                 S.update();
               }
 
-              if (
-                data.mouseDown &&
-                data.mouseMove &&
-                data.moveX &&
-                data.moveY
-              ) {
-                zogr(data);
-                remoteDrawing.graphics.lineTo(data.moveX, data.moveY);
-                S.update();
-              }
-              if (
-                !data.mouseDown &&
-                !data.mouseMove &&
-                data.moveY &&
-                data.moveX
-              ) {
-                zogb(data);
-                remoteDrawing.graphics.endStroke();
-                S.update();
-              }
+              // if (
+              //   data.mouseDown &&
+              //   data.mouseMove &&
+              //   data.moveX &&
+              //   data.moveY
+              // ) {
+              //   zogr(data);
+              //   remoteDrawing.graphics.lineTo(data.moveX, data.moveY);
+              //   S.update();
+              // }
+              // if (
+              //   !data.mouseDown &&
+              //   !data.mouseMove &&
+              //   data.moveY &&
+              //   data.moveX
+              // ) {
+              //   zogb(data);
+              //   remoteDrawing.graphics.endStroke();
+              //   S.update();
+              // }
               S.update();
             });
             //----------------------------------
