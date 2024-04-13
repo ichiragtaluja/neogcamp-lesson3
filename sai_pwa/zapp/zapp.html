@@ -101,6 +101,7 @@ https://zimjs.com/zapps
                 zogr("mouseup");
                 drawing.graphics.endStroke();
                 socket.setProperties({
+                  mouseDown: false,
                   mouseMove: false,
                   moveX: event.stageX,
                   moveY: event.stageY,
@@ -112,6 +113,8 @@ https://zimjs.com/zapps
               });
 
               socket.setProperties({
+                mouseDown: true,
+                mouseMove: false,
                 x: event.stageX,
                 y: event.stageY,
                 color: drawing.graphics._stroke.style,
@@ -120,7 +123,13 @@ https://zimjs.com/zapps
             });
 
             socket.on("data", function (data) {
-              if (data.x && data.y && data.color) {
+              if (
+                data.mouseDown &&
+                !data.mouseMove &&
+                data.x &&
+                data.y &&
+                data.color
+              ) {
                 zogb("here");
 
                 const remoteDrawing = new Shape().addTo(drawingArea);
@@ -128,16 +137,27 @@ https://zimjs.com/zapps
                   .beginStroke(data.color)
                   .moveTo(data.x, data.y);
 
-                if (data.mouseMove && data.moveX && data.moveY) {
-                  zogr(data);
-                  remoteDrawing.graphics.lineTo(data.moveX, data.moveY);
-                  S.update();
-                }
-                if (data.moveY && data.moveX && !data.mouseMove) {
-                  zogb(data);
-                  remoteDrawing.graphics.endStroke();
-                  S.update();
-                }
+                S.update();
+              }
+
+              if (
+                data.mouseDown &&
+                data.mouseMove &&
+                data.moveX &&
+                data.moveY
+              ) {
+                zogr(data);
+                remoteDrawing.graphics.lineTo(data.moveX, data.moveY);
+                S.update();
+              }
+              if (
+                !data.mouseDown &&
+                !data.mouseMove &&
+                data.moveY &&
+                data.moveX
+              ) {
+                zogb(data);
+                remoteDrawing.graphics.endStroke();
                 S.update();
               }
               S.update();
