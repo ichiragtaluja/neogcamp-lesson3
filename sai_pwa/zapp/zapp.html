@@ -65,6 +65,7 @@ https://zimjs.com/zapps
 
           // Create the drawing area outside of the socket ready callback
           const drawingArea = new Container().addTo();
+          let remoteDrawing;
 
           //
           // ZIM SOCKET CONTENT - load a second window
@@ -132,7 +133,7 @@ https://zimjs.com/zapps
               ) {
                 zogb("here");
 
-                const remoteDrawing = new Shape().addTo(drawingArea);
+                remoteDrawing = new Shape().addTo(drawingArea);
                 remoteDrawing.graphics
                   .beginStroke(data.color)
                   .moveTo(data.x, data.y);
